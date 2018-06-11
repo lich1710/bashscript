@@ -21,7 +21,7 @@ function divideSubnet()
 	#If divider = 1, no further split, print current subnet
 	if [ ${_DIVIDER} -eq 1 ]
 	then
-		echo `printSubnet ${_BINARY} ${_CIDR}`
+		echo -e `printSubnet ${_BINARY} ${_CIDR}`
 	else 
 		# split into 2 subnet 
 		_SUBNET1=${_BINARY:0:${_CIDR}}"0"${_ADDRESS_BINARY:1}
@@ -31,13 +31,13 @@ function divideSubnet()
 		then
 			#echo -e "$((2#${_SUBNET1:0:8})).$((2#${_SUBNET1:8:8})).$((2#${_SUBNET1:16:8})).$((2#${_SUBNET1:24}))/$((${_CIDR} + 1))\n"
 			#echo -e "$((2#${_SUBNET2:0:8})).$((2#${_SUBNET2:8:8})).$((2#${_SUBNET2:16:8})).$((2#${_SUBNET2:24}))/$((${_CIDR} + 1))\n"
-			echo `printSubnet ${_SUBNET1} $((${_CIDR} + 1))`
-			echo `printSubnet ${_SUBNET2} $((${_CIDR} + 1))`
+			echo -e `printSubnet ${_SUBNET1} $((${_CIDR} + 1))`
+			echo -e `printSubnet ${_SUBNET2} $((${_CIDR} + 1))`
 		# If Divider > 2, further divide
 		elif [ $((${_DIVIDER} / 2)) -ge 1 ]
 		then
-			echo `divideSubnet ${_SUBNET1} $((${_CIDR} + 1)) $(( ${_DIVIDER} / 2 ))`
-			echo `divideSubnet ${_SUBNET2} $((${_CIDR} + 1)) $(( ${_DIVIDER} - $((${_DIVIDER} / 2)) ))`
+			echo -e `divideSubnet ${_SUBNET1} $((${_CIDR} + 1)) $(( ${_DIVIDER} / 2 ))`
+			echo -e `divideSubnet ${_SUBNET2} $((${_CIDR} + 1)) $(( ${_DIVIDER} - $((${_DIVIDER} / 2)) ))`
 		fi
 	
 	fi
@@ -82,7 +82,7 @@ do
 	BINARY=${BINARY}`convip "${NETWORK_INPUT[i]}"`
 done
 
-echo `divideSubnet ${BINARY} ${CIDR_INPUT} ${DIVIDER_INPUT}`
+echo -e `divideSubnet ${BINARY} ${CIDR_INPUT} ${DIVIDER_INPUT}`
   
 
 
