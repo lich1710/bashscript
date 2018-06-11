@@ -37,7 +37,7 @@ function divideSubnet()
 		elif [ $((${_DIVIDER} / 2)) -ge 1 ]
 		then
 			echo `divideSubnet ${_SUBNET1} $((${_CIDR} + 1)) $(( ${_DIVIDER} / 2 ))`
-			echo `divideSubnet ${_SUBNET1} $((${_CIDR} + 1)) $(( ${_DIVIDER} - $((${_DIVIDER} / 2)) ))`
+			echo `divideSubnet ${_SUBNET2} $((${_CIDR} + 1)) $(( ${_DIVIDER} - $((${_DIVIDER} / 2)) ))`
 		fi
 	
 	fi
