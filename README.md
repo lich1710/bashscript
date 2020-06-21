@@ -1,5 +1,3 @@
-# bashscript
-Here is where I store some of the bash script that I did
 ### DIVIDE SUBNET
 The script splitsubnet.sh can be used to divide a network into a predefined number of subnet
 
